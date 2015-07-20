@@ -328,14 +328,14 @@ module.exports.removeUrlFromBreadCrumbs = function(req,url){
 
 /*
   This method is called during runtime to obtain the configuration of the view for each crud operation
-  If the controller name is "ProjectController.js" it loads the configuration from the companion file: "ProjectCrudConfig.js"
+  If the controller name is "ProjectController.json" it loads the configuration from the companion file: "ProjectCrudConfig.json"
   The configuration file contains a JSON object describing:
   - the list of fields for each crud operation (mandatory)
   - the layout of fields in the crud operations
 */
 
 module.exports.sendConfig = function(req,res,next,controller,cb){
-  var filepath = this.fromPath +"/" + controller.exports.globalId + "CrudConfig.js" ;
+  var filepath = this.fromPath +"/" + controller.exports.globalId + "CrudConfig.json" ;
   var fs = require('fs') ;
   if (fs.existsSync(filepath)){
     var fromFileString = fs.readFileSync(filepath) ;
@@ -347,7 +347,7 @@ module.exports.sendConfig = function(req,res,next,controller,cb){
 },
 
 module.exports.loadConfig = function(controller){
-  var filepath = this.fromPath +"/" + controller.exports.globalId + "CrudConfig.js" ;
+  var filepath = this.fromPath +"/" + controller.exports.globalId + "CrudConfig.json" ;
   var fs = require('fs') ;
   if (fs.existsSync(filepath)){
     var fromFileString = fs.readFileSync(filepath) ;
